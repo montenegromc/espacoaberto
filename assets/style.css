@@ -687,3 +687,71 @@ section { padding: 86px 0; }
 
 /* Imagens demonstrativas — página Segmentos */
 .demo-photo-note{padding:22px 0 0}.demo-photo-note p{margin:0;padding:14px 18px;border-left:4px solid var(--red);background:#f7f7f7;border-radius:0 12px 12px 0;color:#666;font-size:.9rem;line-height:1.55}.segment-story-media::after{content:"IMAGEM DEMONSTRATIVA";position:absolute;left:18px;bottom:18px;padding:7px 10px;border-radius:999px;background:rgba(0,0,0,.66);color:#fff;font-size:.68rem;font-weight:800;letter-spacing:.08em;backdrop-filter:blur(6px)}
+
+/* =========================================================
+   CORREÇÃO DOS CARDS DE SEGMENTOS NO MOBILE
+========================================================= */
+@media (max-width: 768px) {
+
+    .segments-pro .segment-card-3d {
+        height: auto;
+        min-height: 0;
+        perspective: none;
+        overflow: hidden;
+        border-radius: 22px;
+    }
+
+    .segments-pro .segment-card-inner {
+        height: auto;
+        min-height: 0;
+        transform: none !important;
+    }
+
+    .segments-pro .segment-card-front {
+        position: relative;
+        inset: auto;
+        height: auto;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Faz a foto voltar a aparecer */
+    .segments-pro .segment-card-front .segment-photo {
+        display: block;
+        flex: none;
+        width: 100%;
+        height: 260px;
+        min-height: 260px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .segments-pro .segment-card-front > div:last-child {
+        flex: none;
+        min-height: 250px;
+        padding: 26px 24px;
+    }
+
+    .segments-pro .segment-card-front > div:last-child a {
+        margin-top: auto;
+    }
+
+    /* No celular não usamos o verso 3D */
+    .segments-pro .segment-card-back {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .segments-pro .segment-card-front .segment-photo {
+        height: 230px;
+        min-height: 230px;
+    }
+
+    .segments-pro .segment-card-front > div:last-child {
+        min-height: 240px;
+        padding: 24px 20px;
+    }
+}
