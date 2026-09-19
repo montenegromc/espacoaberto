@@ -89,7 +89,7 @@ section { padding: 86px 0; }
 /* =========================================================
    05. HERO / CARROSSEL DA HOME
 ========================================================= */
-.hero-pro { position: relative; min-height: 690px; display: grid; align-items: center; overflow: hidden; color: var(--white); }
+.hero-pro { position: relative; height: 500px; min-height: 500px; display: grid; align-items: center; overflow: hidden; color: var(--white); }
 .hero-carousel, .hero-slide, .hero-overlay { position: absolute; inset: 0; }
 .hero-slide {
     background-image: var(--hero);
@@ -101,8 +101,8 @@ section { padding: 86px 0; }
 }
 .hero-slide.active { opacity: 1; transform: scale(1); }
 .hero-overlay { background: linear-gradient(90deg, rgba(0,0,0,.86), rgba(20,20,20,.58) 50%, rgba(20,20,20,.12)); }
-.hero-content { position: relative; z-index: 2; padding: 95px 0 75px; }
-.hero-copy { max-width: 790px; }
+.hero-content { position: relative; z-index: 2; padding: 35px 0 50px; }
+.hero-copy { max-width: 900px; }
 .pill {
     display: inline-flex;
     border: 1px solid #ffffff66;
@@ -114,10 +114,10 @@ section { padding: 86px 0; }
     font-size: .72rem;
     font-weight: 850;
 }
-.hero-pro h1 { font-size: clamp(3rem, 6.7vw, 6.2rem); line-height: .94; letter-spacing: -.055em; margin: 20px 0 25px; }
+.hero-pro h1 { max-width: 850px; font-size: clamp(3rem, 4vw, 4.3rem); line-height: .94; letter-spacing: -.045em; margin: 14px 0 18px; }
 .hero-pro h1 em { font-style: normal; color: var(--white); }
-.hero-pro p { font-size: 1.15rem; max-width: 650px; color: #f3f6fb; }
-.hero-controls { display: flex; align-items: center; gap: 12px; margin-top: 55px; }
+.hero-pro p { font-size: 1rem; line-height: 1.5; max-width: 650px; margin: 0; color: #f3f6fb; }
+.hero-controls { display: flex; align-items: center; gap: 12px; margin-top: 18px; }
 .hero-controls > button {
     width: 40px; height: 40px; border-radius: 50%;
     border: 1px solid #ffffff66; background: #ffffff12; color: var(--white); cursor: pointer;
@@ -129,7 +129,7 @@ section { padding: 86px 0; }
 /* =========================================================
    06. ACESSOS RÁPIDOS / BENEFÍCIOS
 ========================================================= */
-.quick-stage { padding: 0; position: relative; z-index: 8; margin-top: -35px; }
+.quick-stage { padding: 0; position: relative; z-index: 8; margin-top: -45px; }
 .stage-bar {
     background: var(--white); border: 1px solid var(--line); border-radius: 22px;
     box-shadow: var(--shadow); display: grid; grid-template-columns: repeat(4, 1fr); overflow: hidden;
@@ -338,8 +338,8 @@ section { padding: 86px 0; }
     .split, .form-wrap .split { grid-template-columns: 1fr; gap: 40px; }
     .features { grid-template-columns: 1fr 1fr; }
     .footer-grid { grid-template-columns: 1fr 1fr; }
-    .hero-pro { min-height: 620px; }
-    .hero-content { padding: 80px 0; }
+    .hero-pro { height: auto; min-height: 540px; }
+    .hero-content { padding: 45px 0 60px; }
 }
 
 /* =========================================================
@@ -351,13 +351,13 @@ section { padding: 86px 0; }
     .nav { height: 68px; }
     .brand img { width: 132px; height: auto; }
     .navlinks { top: 68px; }
-    .hero-pro { min-height: 680px; }
+    .hero-pro { height: auto; min-height: 500px; }
     .hero-overlay { background: linear-gradient(0deg, rgba(0,0,0,.94), rgba(20,20,20,.45)); }
-    .hero-content { align-self: end; padding: 100px 0 55px; }
-    .hero-pro h1 { font-size: 3.35rem; }
-    .hero-pro p { font-size: 1rem; }
-    .hero-controls { margin-top: 34px; }
-    .quick-stage { margin-top: 0; padding: 18px 0; }
+    .hero-content { align-self: center; padding: 50px 0 60px; }
+    .hero-pro h1 { font-size: clamp(2.5rem, 11vw, 3.3rem); line-height: .95; }
+    .hero-pro p { font-size: .98rem; }
+    .hero-controls { margin-top: 18px; }
+    .quick-stage { margin-top: -25px; padding: 0 0 18px; }
     .stage-bar { grid-template-columns: 1fr; border-radius: 18px; }
     .stage-bar > a { border-right: 0; border-bottom: 1px solid var(--line); padding: 15px; }
     .benefit-grid, .segments-pro, .project-track, .campus-grid, .lead-form, .form, .units, .features { grid-template-columns: 1fr; }
@@ -634,10 +634,63 @@ section { padding: 86px 0; }
 }
 
 @media (max-width: 768px) {
-    .segments-pro .segment-card-3d { height:auto; min-height:0; perspective:none; }
-    .segment-card-inner { height:auto; transform:none !important; }
-    .segment-card-front { position:relative; height:auto; min-height:520px; }
-    .segment-card-back { display:none; }
+    .segments-pro .segment-card-3d {
+        display: block;
+        height: auto;
+        min-height: 0;
+        overflow: hidden;
+        perspective: none;
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+    }
+    .segments-pro .segment-card-inner {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        transform: none !important;
+        transform-style: flat;
+    }
+    .segments-pro .segment-card-front {
+        display: block;
+        position: relative;
+        inset: auto;
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        overflow: hidden;
+        transform: none;
+    }
+    .segments-pro .segment-card-front .segment-photo {
+        display: block;
+        width: 100%;
+        height: 250px;
+        min-height: 250px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        transform: none;
+    }
+    .segments-pro .segment-card-front > div:last-child {
+        display: block;
+        width: 100%;
+        min-height: 0;
+        padding: 24px 22px 28px;
+    }
+    .segments-pro .segment-card-front > div:last-child a {
+        display: inline-block;
+        margin-top: 16px;
+    }
+    .segments-pro .segment-card-back { display: none; }
+}
+@media (max-width: 480px) {
+    .segments-pro .segment-card-front .segment-photo {
+        height: 230px;
+        min-height: 230px;
+    }
+    .segments-pro .segment-card-front > div:last-child { padding: 24px 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -687,285 +740,3 @@ section { padding: 86px 0; }
 
 /* Imagens demonstrativas — página Segmentos */
 .demo-photo-note{padding:22px 0 0}.demo-photo-note p{margin:0;padding:14px 18px;border-left:4px solid var(--red);background:#f7f7f7;border-radius:0 12px 12px 0;color:#666;font-size:.9rem;line-height:1.55}.segment-story-media::after{content:"IMAGEM DEMONSTRATIVA";position:absolute;left:18px;bottom:18px;padding:7px 10px;border-radius:999px;background:rgba(0,0,0,.66);color:#fff;font-size:.68rem;font-weight:800;letter-spacing:.08em;backdrop-filter:blur(6px)}
-
-/* =========================================================
-   CORREÇÃO DOS CARDS DE SEGMENTOS NO MOBILE
-========================================================= */
-@media (max-width: 768px) {
-
-    .segments-pro .segment-card-3d {
-        height: auto;
-        min-height: 0;
-        perspective: none;
-        overflow: hidden;
-        border-radius: 22px;
-    }
-
-    .segments-pro .segment-card-inner {
-        height: auto;
-        min-height: 0;
-        transform: none !important;
-    }
-
-    .segments-pro .segment-card-front {
-        position: relative;
-        inset: auto;
-        height: auto;
-        min-height: 0;
-        display: flex;
-        flex-direction: column;
-    }
-
-    /* Faz a foto voltar a aparecer */
-    .segments-pro .segment-card-front .segment-photo {
-        display: block;
-        flex: none;
-        width: 100%;
-        height: 260px;
-        min-height: 260px;
-        background-size: cover;
-        background-position: center;
-    }
-
-    .segments-pro .segment-card-front > div:last-child {
-        flex: none;
-        min-height: 250px;
-        padding: 26px 24px;
-    }
-
-    .segments-pro .segment-card-front > div:last-child a {
-        margin-top: auto;
-    }
-
-    /* No celular não usamos o verso 3D */
-    .segments-pro .segment-card-back {
-        display: none;
-    }
-}
-
-@media (max-width: 480px) {
-
-    .segments-pro .segment-card-front .segment-photo {
-        height: 230px;
-        min-height: 230px;
-    }
-
-    .segments-pro .segment-card-front > div:last-child {
-        min-height: 240px;
-        padding: 24px 20px;
-    }
-}
-
-/* =========================================================
-   CORREÇÃO FINAL DOS CARDS DA HOME NO MOBILE
-========================================================= */
-@media screen and (max-width: 768px) {
-
-    .segments-pro .segment-card-3d {
-        display: block !important;
-        height: auto !important;
-        min-height: 0 !important;
-        overflow: hidden !important;
-        perspective: none !important;
-        background: #fff !important;
-        border: 1px solid #dedede !important;
-        border-radius: 22px !important;
-    }
-
-    .segments-pro .segment-card-inner {
-        display: block !important;
-        position: relative !important;
-        width: 100% !important;
-        height: auto !important;
-        min-height: 0 !important;
-        transform: none !important;
-        transform-style: flat !important;
-    }
-
-    .segments-pro .segment-card-front {
-        display: block !important;
-        position: relative !important;
-        inset: auto !important;
-        width: 100% !important;
-        height: auto !important;
-        min-height: 0 !important;
-        overflow: hidden !important;
-        transform: none !important;
-    }
-
-    .segments-pro .segment-card-front .segment-photo {
-        display: block !important;
-        position: relative !important;
-        width: 100% !important;
-        height: 250px !important;
-        min-height: 250px !important;
-        flex: none !important;
-        background-size: cover !important;
-        background-position: center !important;
-        background-repeat: no-repeat !important;
-        transform: none !important;
-    }
-
-    .segments-pro .segment-card-front > div:last-child {
-        display: block !important;
-        position: relative !important;
-        width: 100% !important;
-        height: auto !important;
-        min-height: 0 !important;
-        padding: 24px 22px 28px !important;
-    }
-
-    .segments-pro .segment-card-front > div:last-child a {
-        display: inline-block !important;
-        margin-top: 16px !important;
-    }
-
-    .segments-pro .segment-card-back {
-        display: none !important;
-    }
-}
-
-/* =========================================================
-   22. HERO COMPACTA E RESPONSIVA
-========================================================= */
-
-//* =========================================================
-   22. HERO COMPACTA E RESPONSIVA
-========================================================= */
-
-/* DESKTOP */
-.hero-pro {
-    height: 560px !important;
-    min-height: 560px !important;
-    max-height: 560px !important;
-}
-
-.hero-content {
-    padding: 35px 0 50px !important;
-}
-
-.hero-copy {
-    max-width: 850px !important;
-}
-
-.hero-pro h1 {
-    font-size: clamp(3rem, 4.3vw, 4.5rem) !important;
-    line-height: .92 !important;
-    margin: 14px 0 18px !important;
-}
-
-.hero-pro p {
-    font-size: 1rem !important;
-    line-height: 1.5 !important;
-    max-width: 620px !important;
-    margin: 0 !important;
-}
-
-.hero-controls {
-    margin-top: 20px !important;
-}
-
-.quick-stage {
-    margin-top: -35px !important;
-    position: relative !important;
-    z-index: 8 !important;
-}
-
-/* O bloco seguinte invade levemente a Hero */
-.quick-stage {
-    margin-top: -35px !important;
-    position: relative !important;
-    z-index: 8 !important;
-}
-
-
-/* TABLET */
-@media screen and (max-width: 980px) {
-
-    .hero-pro {
-        height: auto !important;
-        min-height: 540px !important;
-        max-height: none !important;
-    }
-
-    .hero-pro h1 {
-        font-size: clamp(3rem, 7vw, 4.5rem) !important;
-    }
-
-}
-
-
-/* CELULAR */
-@media screen and (max-width: 640px) {
-
-    .hero-pro {
-        height: auto !important;
-        min-height: 500px !important;
-        max-height: none !important;
-    }
-
-    .hero-content {
-        padding: 55px 0 65px !important;
-        align-self: center !important;
-    }
-
-    .hero-pro h1 {
-        font-size: clamp(2.6rem, 12vw, 3.5rem) !important;
-        line-height: .94 !important;
-        margin: 14px 0 18px !important;
-    }
-
-    .hero-pro p {
-        font-size: .98rem !important;
-    }
-
-    .hero-controls {
-        margin-top: 22px !important;
-    }
-
-    .quick-stage {
-        margin-top: -25px !important;
-        padding: 0 0 18px !important;
-    }
-}
-
-/* AJUSTE FINAL DA HERO - DESKTOP */
-@media screen and (min-width: 981px) {
-
-    .hero-pro {
-        height: 560px !important;
-        min-height: 560px !important;
-        max-height: 560px !important;
-    }
-
-    .hero-content {
-        padding: 35px 0 45px !important;
-    }
-
-    .hero-copy {
-        max-width: 1000px !important;
-    }
-
-    .hero-pro h1 {
-        max-width: 900px !important;
-        font-size: clamp(3.2rem, 4.2vw, 4.6rem) !important;
-        line-height: .95 !important;
-        letter-spacing: -.045em !important;
-        margin: 15px 0 18px !important;
-    }
-
-    .hero-pro p {
-        max-width: 680px !important;
-        font-size: 1rem !important;
-        line-height: 1.5 !important;
-        margin: 0 !important;
-    }
-
-    .hero-controls {
-        margin-top: 22px !important;
-    }
-
-    .quick-stage {
-        margin-top: -35px !important;
-    }
-}
