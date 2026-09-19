@@ -825,3 +825,39 @@ section { padding: 86px 0; }
     }
 }
 
+/* =========================================================
+   22. ALTURA RESPONSIVA DA HERO
+   Faz o próximo bloco aparecer sem precisar rolar tanto
+========================================================= */
+
+/* PC */
+.hero-pro {
+    min-height: clamp(500px, 72vh, 620px) !important;
+}
+
+/* Tablet */
+@media screen and (max-width: 980px) {
+    .hero-pro {
+        min-height: clamp(500px, 68vh, 580px) !important;
+    }
+}
+
+/* Celular */
+@media screen and (max-width: 640px) {
+    .hero-pro {
+        min-height: clamp(480px, 65vh, 530px) !important;
+    }
+
+    .hero-content {
+        padding: 65px 0 45px !important;
+    }
+
+    .hero-controls {
+        margin-top: 24px !important;
+    }
+
+    .quick-stage {
+        margin-top: -20px !important;
+        padding: 0 0 18px !important;
+    }
+}
