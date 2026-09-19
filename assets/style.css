@@ -1,0 +1,689 @@
+/* =========================================================
+   01. VARIÁVEIS / IDENTIDADE VISUAL
+========================================================= */
+:root {
+    --red: #e30613;
+    --black: #171717;
+    --black-light: #202020;
+    --ink: #171717;
+    --muted: #666666;
+    --cream: #f6f6f6;
+    --soft: #f3f3f3;
+    --line: #dedede;
+    --white: #ffffff;
+    --radius: 22px;
+    --shadow: 0 18px 50px rgba(0, 0, 0, 0.10);
+}
+
+/* =========================================================
+   02. RESET / BASE
+========================================================= */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    margin: 0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.6;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+.container { width: min(1160px, calc(100% - 36px)); margin: auto; }
+section { padding: 86px 0; }
+.grid { display: grid; gap: 20px; }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 46px; align-items: center; }
+.eyebrow {
+    color: var(--red);
+    font-size: .78rem;
+    font-weight: 900;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+}
+.actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+.full { grid-column: 1 / -1; }
+
+/* =========================================================
+   03. TOPBAR / HEADER / NAVEGAÇÃO
+========================================================= */
+.topbar { background: var(--black); color: var(--white); font-size: .85rem; }
+.topbar .container { display: flex; justify-content: space-between; padding: 7px 0; }
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255, 255, 255, .96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+}
+.nav { height: 78px; display: flex; align-items: center; gap: 28px; }
+.brand { display: flex; align-items: center; margin-right: auto; background: transparent; }
+.brand img { width: 155px; height: 58px; object-fit: contain; background: transparent; }
+.navlinks { display: flex; gap: 22px; align-items: center; font-weight: 700; font-size: .92rem; }
+.navlinks a { transition: color .2s ease; }
+.navlinks a:hover, .navlinks a.active { color: var(--red); }
+.menu { display: none; width: 42px; height: 42px; padding: 8px; background: none; border: 0; cursor: pointer; }
+.menu span { display: block; width: 24px; height: 2px; margin: 5px auto; background: var(--ink); }
+
+/* =========================================================
+   04. BOTÕES
+========================================================= */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px 20px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: var(--red); color: var(--white); }
+.btn-secondary { border-color: #cbd1db; background: var(--white); }
+.btn-glass { background: #ffffff12; color: var(--white); border-color: #ffffff88; }
+
+/* =========================================================
+   05. HERO / CARROSSEL DA HOME
+========================================================= */
+.hero-pro { position: relative; min-height: 690px; display: grid; align-items: center; overflow: hidden; color: var(--white); }
+.hero-carousel, .hero-slide, .hero-overlay { position: absolute; inset: 0; }
+.hero-slide {
+    background-image: var(--hero);
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transform: scale(1.04);
+    transition: opacity 1s ease, transform 7s ease;
+}
+.hero-slide.active { opacity: 1; transform: scale(1); }
+.hero-overlay { background: linear-gradient(90deg, rgba(0,0,0,.86), rgba(20,20,20,.58) 50%, rgba(20,20,20,.12)); }
+.hero-content { position: relative; z-index: 2; padding: 95px 0 75px; }
+.hero-copy { max-width: 790px; }
+.pill {
+    display: inline-flex;
+    border: 1px solid #ffffff66;
+    background: #ffffff17;
+    padding: 7px 13px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: .13em;
+    font-size: .72rem;
+    font-weight: 850;
+}
+.hero-pro h1 { font-size: clamp(3rem, 6.7vw, 6.2rem); line-height: .94; letter-spacing: -.055em; margin: 20px 0 25px; }
+.hero-pro h1 em { font-style: normal; color: var(--white); }
+.hero-pro p { font-size: 1.15rem; max-width: 650px; color: #f3f6fb; }
+.hero-controls { display: flex; align-items: center; gap: 12px; margin-top: 55px; }
+.hero-controls > button {
+    width: 40px; height: 40px; border-radius: 50%;
+    border: 1px solid #ffffff66; background: #ffffff12; color: var(--white); cursor: pointer;
+}
+.hero-dots { display: flex; gap: 7px; }
+.hero-dots button { width: 28px; height: 4px; border: 0; border-radius: 10px; background: #ffffff66; padding: 0; }
+.hero-dots button.active { background: var(--white); width: 46px; }
+
+/* =========================================================
+   06. ACESSOS RÁPIDOS / BENEFÍCIOS
+========================================================= */
+.quick-stage { padding: 0; position: relative; z-index: 8; margin-top: -35px; }
+.stage-bar {
+    background: var(--white); border: 1px solid var(--line); border-radius: 22px;
+    box-shadow: var(--shadow); display: grid; grid-template-columns: repeat(4, 1fr); overflow: hidden;
+}
+.stage-bar > a { display: flex; gap: 13px; align-items: center; padding: 22px 18px; border-right: 1px solid var(--line); transition: .2s; }
+.stage-bar > a:last-child { border: 0; }
+.stage-bar > a:hover { background: #fafbfd; }
+.stage-bar b, .stage-bar small { display: block; }
+.stage-bar b { font-size: .88rem; }
+.stage-bar small { color: var(--muted); font-size: .73rem; }
+.stage-icon { width: 43px; height: 43px; border-radius: 13px; display: grid; place-items: center; font-weight: 900; flex: 0 0 auto; }
+.stage-icon.red { background: #fff0f1; color: var(--red); }
+.stage-icon.orange { background: #fff5df; color: #d98a00; }
+.stage-icon.green { background: #eaf8ef; color: #16834b; }
+.stage-icon.blue { background: #f1f1f1; color: #333; }
+
+.section-head { display: flex; align-items: end; justify-content: space-between; gap: 28px; margin-bottom: 32px; }
+.section-head h2 { font-size: clamp(2rem, 4vw, 3.4rem); line-height: 1.05; margin: 8px 0; letter-spacing: -.04em; }
+.section-head p { max-width: 520px; color: var(--muted); }
+.benefit-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; }
+.benefit { border: 1px solid var(--line); border-radius: 20px; padding: 23px 20px; background: linear-gradient(145deg, #fff, #fafbfe); }
+.benefit span { font-size: 2rem; color: var(--red); }
+.benefit h3 { font-size: 1rem; margin: 13px 0 7px; }
+.benefit p { font-size: .88rem; color: var(--muted); margin: 0; }
+
+/* =========================================================
+   07. 30 ANOS
+========================================================= */
+.anniversary { background: var(--black); color: var(--white); overflow: hidden; }
+.anniversary-grid { display: grid; grid-template-columns: .7fr 1.4fr 1fr; gap: 45px; align-items: center; }
+.anniversary-number { display: flex; align-items: flex-end; }
+.anniversary-number strong { font-size: 9rem; line-height: .75; letter-spacing: -.08em; }
+.anniversary-number span { font-size: 1.3rem; margin: 0 0 5px 10px; }
+.anniversary h2 { font-size: clamp(2.3rem, 4vw, 4rem); line-height: 1.02; margin: 8px 0 18px; }
+.anniversary p { color: #e2e2e2; }
+.eyebrow.light, .text-link.light { color: var(--white); }
+.anniversary-quote { border-left: 1px solid #ffffff44; padding-left: 28px; }
+.anniversary-quote p { font-size: 1.45rem; color: var(--white); font-weight: 750; }
+
+/* =========================================================
+   08. CARDS / SEGMENTOS / PROJETOS
+========================================================= */
+.card {
+    background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden; box-shadow: 0 8px 25px rgba(22,36,64,.05); transition: .25s;
+}
+.card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+.card .pad, .card.pad { padding: 24px; }
+.card.pad .pad { padding: 0; }
+.card h3 { margin: 0 0 8px; font-size: 1.25rem; }
+.card p { color: var(--muted); margin: 0 0 14px; }
+.features { grid-template-columns: repeat(3, 1fr); }
+.feature { padding: 28px; border-radius: var(--radius); background: var(--cream); border: 1px solid #e9e9e9; }
+.feature b { font-size: 1.08rem; }
+.feature span { display: block; color: var(--muted); margin-top: 7px; }
+.segments-list { gap: 28px; }
+
+.segments-pro { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.segment-card { border: 1px solid var(--line); border-radius: 22px; overflow: hidden; background: var(--white); transition: .25s; }
+.segment-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+.segment-photo { height: 225px; background-size: cover; background-position: center; }
+.school-photo-one { background-image: url("https://static.wixstatic.com/media/49149f_1801f9e16cf847c198e402490bc27521~mv2_d_4608_3456_s_4_2.jpg"); }
+.school-photo-two { background-image: url("https://static.wixstatic.com/media/49149f_99354496e3db43b68f589900eda52fda~mv2_d_4000_2250_s_2.jpg"); }
+.school-photo-three { background-image: url("https://static.wixstatic.com/media/49149f_43eb6abb998d4ca8ad2db8ceb361c5d2~mv2_d_4032_3024_s_4_2.jpeg"); }
+.segment-card > div:last-child { padding: 22px; }
+.segment-card small { color: var(--red); font-weight: 850; text-transform: uppercase; letter-spacing: .08em; }
+.segment-card h3 { margin: 5px 0 8px; }
+.segment-card p { color: var(--muted); font-size: .9rem; }
+.segment-card a, .text-link { font-weight: 850; color: var(--red); }
+
+.projects-home { background: var(--soft); }
+.project-track { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.project-track article { background: var(--white); border: 1px solid var(--line); border-radius: 20px; padding: 27px; }
+.project-track b { font-size: 1.08rem; }
+.project-track p { color: var(--muted); font-size: .9rem; }
+
+/* =========================================================
+   09. PÁGINAS INTERNAS / ESCOLA
+========================================================= */
+.page-hero { padding: 95px 0 70px; background: linear-gradient(135deg, #f8fafc, #fff5f5); }
+.page-hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1; margin: 10px 0; }
+.page-intro { max-width: 720px; font-size: 1.15rem; color: #596579; }
+.prose { max-width: 800px; }
+.prose h2 { font-size: 2rem; }
+.prose p { color: #4e596b; }
+.photo {
+    min-height: 460px; border-radius: 30px;
+    background: url("https://static.wixstatic.com/media/49149f_7efd91d0e7e948b4b3dc927687705cb1~mv2.jpg") center/cover;
+    box-shadow: var(--shadow);
+}
+
+/* =========================================================
+   10. UNIDADES
+========================================================= */
+.units { grid-template-columns: 1fr 1fr; }
+.unit { padding: 30px; }
+.unit-photo { width: calc(100% + 60px); height: 260px; object-fit: cover; margin: -30px -30px 26px; }
+.campus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.campus { border: 1px solid var(--line); border-radius: 24px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; background: var(--white); }
+.campus-img { min-height: 280px; background-size: cover; background-position: center; }
+.campus-coco { background-image: url("unidade-coco.jpeg"); }
+.campus-dom { background-image: url("https://static.wixstatic.com/media/49149f_43eb6abb998d4ca8ad2db8ceb361c5d2~mv2_d_4032_3024_s_4_2.jpeg"); }
+.campus > div:last-child { padding: 26px; }
+.tag { display: inline-block; background: #f1f1f1; color: #222; font-weight: 850; font-size: .75rem; padding: 5px 10px; border-radius: 999px; }
+.campus h3 { font-size: 1.5rem; margin: 10px 0 5px; }
+.campus p { color: var(--muted); }
+
+/* =========================================================
+   11. FORMULÁRIOS / MATRÍCULAS / CONTATO
+========================================================= */
+.form-wrap { background: var(--soft); padding: 90px 0; }
+.form-wrap .split { grid-template-columns: .85fr 1.15fr; gap: 70px; }
+.form-wrap h2 { margin: 10px 0 22px; font-size: clamp(2.5rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -.04em; }
+.form-wrap .split > div > p { max-width: 520px; color: var(--muted); font-size: 1.05rem; line-height: 1.7; }
+
+.form {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px;
+    padding: 36px; background: var(--white); border: 1px solid var(--line);
+    border-radius: 26px; box-shadow: var(--shadow);
+}
+.form label, .lead-form label { display: flex; flex-direction: column; gap: 8px; font-size: .86rem; font-weight: 800; }
+.form input, .form select, .form textarea,
+.lead-form input, .lead-form select {
+    width: 100%; margin: 0; padding: 14px 16px; font: inherit; color: var(--ink);
+    background: #fafafa; border: 1px solid #d6d6d6; border-radius: 12px; outline: none;
+    transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.form input, .form select { min-height: 52px; }
+.form textarea { min-height: 130px; resize: vertical; }
+.form input:focus, .form select:focus, .form textarea:focus,
+.lead-form input:focus, .lead-form select:focus {
+    background: var(--white); border-color: var(--red); box-shadow: 0 0 0 4px rgba(227,6,19,.08);
+}
+.form input[type="checkbox"] { width: 18px; height: 18px; min-height: auto; margin: 0; accent-color: var(--red); }
+.form .full label:has(input[type="checkbox"]) {
+    flex-direction: row; align-items: center; gap: 10px; color: var(--muted); font-size: .85rem; font-weight: 600;
+}
+.form button[type="submit"] { width: 100%; min-height: 54px; }
+.notice { display: none; padding: 14px 16px; color: #215d2b; background: #edf8ef; border-radius: 12px; font-weight: 700; }
+
+.enroll { background: linear-gradient(120deg, #f4f4f4, #fff4f4); }
+.enroll-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 55px; align-items: center; }
+.enroll-copy h2 { font-size: clamp(2.5rem, 4vw, 4rem); line-height: 1; margin: 8px 0 18px; }
+.enroll-copy ul { list-style: none; padding: 0; }
+.lead-form {
+    background: var(--white); border: 1px solid var(--line); border-radius: 26px; padding: 28px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 15px; box-shadow: var(--shadow);
+}
+.lead-form small { color: var(--muted); }
+
+/* =========================================================
+   12. WHATSAPP FLUTUANTE
+========================================================= */
+.whatsapp {
+    position: fixed; right: 24px; bottom: 24px; z-index: 50;
+    width: 58px; height: 58px; display: flex; align-items: center; justify-content: center;
+    padding: 0; background: #25d366; color: var(--white); border-radius: 50%;
+    box-shadow: 0 8px 25px rgba(0,0,0,.20);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.whatsapp svg { width: 32px; height: 32px; }
+.whatsapp:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 12px 30px rgba(0,0,0,.25); }
+
+/* =========================================================
+   13. FOOTER
+========================================================= */
+.footer { background: var(--black); color: var(--white); padding: 54px 0 24px; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 30px; }
+.footer a { color: #e4e4e4; }
+.footer small { color: #bcbcbc; }
+.footer-brand img { width: 180px; height: auto; padding: 0; background: transparent; }
+.footer-bottom { display: flex; justify-content: space-between; border-top: 1px solid #ffffff22; margin-top: 35px; padding-top: 20px; }
+.footer-divider { border: 0; border-top: 1px solid #444; margin: 30px 0 18px; }
+
+/* =========================================================
+   14. ANIMAÇÕES
+========================================================= */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.show { opacity: 1; transform: none; }
+
+/* =========================================================
+   15. RESPONSIVIDADE — TABLET
+========================================================= */
+@media (max-width: 980px) {
+    .benefit-grid { grid-template-columns: repeat(2, 1fr); }
+    .segments-pro { grid-template-columns: 1fr 1fr; }
+    .anniversary-grid { grid-template-columns: 1fr 2fr; }
+    .anniversary-quote { grid-column: 1 / -1; }
+    .enroll-grid { grid-template-columns: 1fr; }
+    .project-track { grid-template-columns: 1fr 1fr; }
+    .campus { grid-template-columns: 1fr; }
+    .stage-bar { grid-template-columns: 1fr 1fr; }
+    .nav-cta { display: none; }
+}
+
+@media (max-width: 900px) {
+    .topbar { display: none; }
+    .navlinks {
+        position: absolute; left: 0; right: 0; top: 78px; z-index: 90;
+        padding: 24px; display: none; flex-direction: column; align-items: flex-start;
+        background: var(--white); border-bottom: 1px solid var(--line);
+    }
+    .navlinks.open { display: flex; }
+    .menu { display: block; }
+    .nav > .btn { display: none; }
+    .split, .form-wrap .split { grid-template-columns: 1fr; gap: 40px; }
+    .features { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .hero-pro { min-height: 620px; }
+    .hero-content { padding: 80px 0; }
+}
+
+/* =========================================================
+   16. RESPONSIVIDADE — CELULAR
+========================================================= */
+@media (max-width: 640px) {
+    .container { width: min(calc(100% - 28px), 1180px); }
+    section { padding: 64px 0; }
+    .nav { height: 68px; }
+    .brand img { width: 132px; height: auto; }
+    .navlinks { top: 68px; }
+    .hero-pro { min-height: 680px; }
+    .hero-overlay { background: linear-gradient(0deg, rgba(0,0,0,.94), rgba(20,20,20,.45)); }
+    .hero-content { align-self: end; padding: 100px 0 55px; }
+    .hero-pro h1 { font-size: 3.35rem; }
+    .hero-pro p { font-size: 1rem; }
+    .hero-controls { margin-top: 34px; }
+    .quick-stage { margin-top: 0; padding: 18px 0; }
+    .stage-bar { grid-template-columns: 1fr; border-radius: 18px; }
+    .stage-bar > a { border-right: 0; border-bottom: 1px solid var(--line); padding: 15px; }
+    .benefit-grid, .segments-pro, .project-track, .campus-grid, .lead-form, .form, .units, .features { grid-template-columns: 1fr; }
+    .anniversary-grid { grid-template-columns: 1fr; gap: 25px; }
+    .anniversary-number strong { font-size: 7rem; }
+    .form-wrap { padding: 60px 0; }
+    .form { padding: 24px; gap: 17px; border-radius: 20px; }
+    .form > div, .form .full { grid-column: 1; }
+    .form-wrap h2 { font-size: 2.5rem; }
+    .section-head { display: block; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { display: block; }
+}
+
+/* =========================================================
+   19. PADRONIZAÇÃO DAS IMAGENS DOS CARDS
+   Faz as fotos preencherem corretamente o card sem deformar.
+========================================================= */
+.unit {
+    overflow: hidden;
+}
+
+.unit-photo {
+    display: block;
+    width: calc(100% + 60px);
+    height: clamp(280px, 24vw, 380px);
+    margin: -30px -30px 26px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 0;
+}
+
+/* Outras imagens que estiverem dentro de cards também respeitam o contêiner. */
+.card img:not(.unit-photo),
+.project-track article img,
+.benefit img,
+.feature img {
+    max-width: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .unit-photo {
+        height: 240px;
+    }
+}
+
+
+/* =========================================================
+   20. SISTEMA DE MICROINTERAÇÕES DOS CARDS
+   Movimento sutil e consistente, sem flip e sem alterar o layout.
+========================================================= */
+:where(.card, .benefit, .feature, .project-track article, .unit, .campus) {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    transition:
+        transform .35s cubic-bezier(.2,.8,.2,1),
+        box-shadow .35s cubic-bezier(.2,.8,.2,1),
+        border-color .35s ease,
+        background-color .35s ease;
+    will-change: transform;
+}
+
+/* Linha institucional que cresce no rodapé do card. */
+:where(.card, .benefit, .feature, .project-track article, .unit, .campus)::after {
+    content: "";
+    position: absolute;
+    z-index: 5;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--red);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform .35s cubic-bezier(.2,.8,.2,1);
+    pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    :where(.card, .benefit, .feature, .project-track article, .unit, .campus):hover {
+        transform: translateY(-8px);
+        border-color: rgba(227, 6, 19, .35);
+        box-shadow: 0 22px 50px rgba(22, 36, 64, .13);
+    }
+
+    :where(.card, .benefit, .feature, .project-track article, .unit, .campus):hover::after {
+        transform: scaleX(1);
+    }
+
+    /* Fotos recebem somente um zoom discreto. */
+    .segment-card:hover .segment-photo,
+    .unit:hover .unit-photo,
+    .campus:hover .campus-img,
+    .card:hover img {
+        transform: scale(1.035);
+    }
+
+    /* Ícones dos benefícios ganham vida sem deslocar o texto. */
+    .benefit:hover .benefit-icon,
+    .feature:hover .icon,
+    .feature:hover svg {
+        transform: translateY(-3px) scale(1.06);
+    }
+
+    /* Links recebem um pequeno avanço visual. */
+    .segment-card:hover .text-link,
+    .card:hover .text-link {
+        transform: translateX(4px);
+    }
+}
+
+.segment-photo,
+.unit-photo,
+.campus-img,
+.card img {
+    transition: transform .55s cubic-bezier(.2,.8,.2,1);
+}
+
+.benefit-icon,
+.feature .icon,
+.feature svg {
+    transition: transform .35s cubic-bezier(.2,.8,.2,1);
+    transform-origin: center;
+}
+
+.segment-card .text-link,
+.card .text-link {
+    display: inline-flex;
+    transition: transform .3s ease, color .3s ease;
+}
+
+/* Segmentos voltam a ser cards naturais: sem altura fixa e sem faces 3D. */
+.segment-card {
+    height: auto;
+    min-height: 0;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--white);
+    box-shadow: 0 8px 25px rgba(22,36,64,.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :where(.card, .benefit, .feature, .project-track article, .unit, .campus),
+    :where(.card, .benefit, .feature, .project-track article, .unit, .campus)::after,
+    .segment-photo, .unit-photo, .campus-img, .card img,
+    .benefit-icon, .feature .icon, .feature svg,
+    .segment-card .text-link, .card .text-link {
+        transition: none !important;
+        transform: none !important;
+    }
+}
+
+
+/* =========================================================
+   21. SEGMENTOS DA HOME — FLIP 3D ISOLADO
+   Apenas os quatro cards de segmentos usam rotação 3D.
+========================================================= */
+.segments-pro .segment-card-3d {
+    height: 590px;
+    min-height: 590px;
+    overflow: visible;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    perspective: 1400px;
+    isolation: isolate;
+}
+
+.segments-pro .segment-card-3d::after { display: none; }
+
+.segment-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform .72s cubic-bezier(.2,.75,.25,1);
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+.segment-card-front,
+.segment-card-back {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    box-shadow: 0 10px 30px rgba(22,36,64,.07);
+}
+
+.segment-card-front {
+    display: flex;
+    flex-direction: column;
+    background: var(--white);
+}
+
+.segment-card-front .segment-photo {
+    flex: 0 0 48%;
+    width: 100%;
+    min-height: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform .65s cubic-bezier(.2,.8,.2,1);
+}
+
+.segment-card-front > div:last-child {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 22px;
+}
+
+.segment-card-front > div:last-child a { margin-top: auto; }
+
+.segment-card-back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 34px 30px;
+    color: #fff;
+    background:
+      radial-gradient(circle at 90% 10%, rgba(255,255,255,.14), transparent 32%),
+      linear-gradient(145deg, var(--red) 0%, #c9000b 52%, #8f0008 100%);
+}
+
+.segment-card-back::before {
+    content: "";
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 50%;
+    right: -65px;
+    top: -65px;
+}
+
+.segment-back-kicker {
+    font-size: .76rem;
+    font-weight: 900;
+    letter-spacing: .14em;
+    opacity: .78;
+    margin-bottom: 12px;
+}
+.segment-card-back h3 { color:#fff; font-size:1.65rem; line-height:1.15; margin:0 0 18px; }
+.segment-card-back p { color:rgba(255,255,255,.88); line-height:1.65; margin:0 0 12px; }
+.segment-card-back .segment-back-lead { color:#fff; font-weight:800; font-size:1.05rem; }
+.segment-back-link {
+    margin-top: 18px;
+    display: inline-flex;
+    padding: 11px 16px;
+    border: 1px solid rgba(255,255,255,.55);
+    border-radius: 999px;
+    color:#fff !important;
+    font-weight:850;
+    transition: background .25s ease, color .25s ease, transform .25s ease;
+}
+.segment-back-link:hover { background:#fff; color:var(--red) !important; transform:translateX(3px); }
+
+@media (hover:hover) and (pointer:fine) {
+    .segment-card-3d:hover { transform:none; box-shadow:none; border-color:transparent; }
+    .segment-card-3d:hover .segment-card-inner { transform: rotateY(180deg); }
+    .segment-card-3d:hover .segment-photo { transform: scale(1.025); }
+}
+
+@media (max-width: 1100px) {
+    .segments-pro .segment-card-3d { height: 560px; min-height:560px; }
+}
+
+@media (max-width: 768px) {
+    .segments-pro .segment-card-3d { height:auto; min-height:0; perspective:none; }
+    .segment-card-inner { height:auto; transform:none !important; }
+    .segment-card-front { position:relative; height:auto; min-height:520px; }
+    .segment-card-back { display:none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .segment-card-inner { transition:none !important; transform:none !important; }
+}
+
+/* =========================================================
+   19. PÁGINA SEGMENTOS — jornada visual
+   ========================================================= */
+.segments-hero{padding-bottom:54px;background:linear-gradient(180deg,#fff 0%,#fafafa 100%)}
+.segments-hero h1{max-width:900px;font-size:clamp(2.6rem,5vw,5.2rem);line-height:.98;letter-spacing:-.045em;margin:14px 0 24px}
+.segments-hero .page-intro{max-width:800px}
+.segments-jump{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+.segments-jump a{padding:10px 15px;border:1px solid #dedede;border-radius:999px;font-size:.88rem;font-weight:800;color:var(--ink);background:#fff;transition:.25s ease}
+.segments-jump a:hover{border-color:var(--red);color:var(--red);transform:translateY(-2px)}
+.segment-story{padding:88px 0;border-top:1px solid #eee;scroll-margin-top:100px}
+.segment-story.alt{background:#fafafa}
+.segment-story-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(42px,7vw,100px);align-items:center}
+.segment-story.alt .segment-story-media{order:2}.segment-story.alt .segment-story-copy{order:1}
+.segment-story-media{height:520px;border-radius:30px;overflow:hidden;background:#eee;box-shadow:0 24px 60px rgba(0,0,0,.09);position:relative}
+.segment-story-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.segment-story:hover .segment-story-media img{transform:scale(1.025)}
+.segment-story-copy h2{font-size:clamp(2.2rem,3.6vw,4rem);line-height:1.03;letter-spacing:-.035em;margin:10px 0 18px}
+.segment-story-copy>p{font-size:1.08rem;line-height:1.8;color:#626262;max-width:640px}
+.segment-story-copy .segment-lead{font-size:1.28rem;font-weight:850;color:var(--ink);line-height:1.45;margin-bottom:8px}
+.segment-points{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:28px 0}
+.segment-points span{position:relative;padding:13px 14px 13px 36px;border-radius:12px;background:#f5f5f5;font-weight:750;font-size:.9rem}
+.segment-points span:before{content:'✓';position:absolute;left:14px;color:var(--red);font-weight:950}
+.segment-story.alt .segment-points span{background:#fff}
+.segment-story .text-link{font-weight:900;color:var(--red);display:inline-flex;transition:transform .25s ease}
+.segment-story .text-link:hover{transform:translateX(5px)}
+.photo-fallback{background-size:cover;background-position:center}
+.photo-infantil{background-image:url('https://static.wixstatic.com/media/');background-color:#eee}
+.photo-iniciais{background-image:linear-gradient(135deg,rgba(227,6,19,.08),rgba(0,0,0,.04)),url('https://static.wixstatic.com/media/');}
+.photo-finais{background:linear-gradient(135deg,#efefef,#d9d9d9)}
+.photo-medio{background:linear-gradient(135deg,#e9e9e9,#cfcfcf)}
+.photo-cursinho{background:linear-gradient(135deg,#202020,#444)}
+.segments-experience{padding:96px 0;background:#171717;color:#fff}
+.segments-experience .section-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:38px}
+.segments-experience h2{color:#fff;font-size:clamp(2rem,3.5vw,3.6rem);margin:8px 0 0;max-width:720px}.segments-experience .section-head p{color:#bbb;max-width:420px}
+.experience-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.experience-card{padding:28px;border:1px solid #383838;border-radius:20px;background:#202020;transition:transform .3s ease,border-color .3s ease,background .3s ease}
+.experience-card:hover{transform:translateY(-7px);border-color:var(--red);background:#242424}.experience-card strong{font-size:1.15rem}.experience-card p{color:#bdbdbd;line-height:1.65;margin:12px 0 0}
+.segments-cta{padding:72px 0;background:var(--red);color:#fff}.segments-cta .container{display:flex;align-items:center;justify-content:space-between;gap:40px}.segments-cta h2{color:#fff;font-size:clamp(2rem,3vw,3.2rem);margin:7px 0 10px;max-width:800px}.segments-cta p{margin:0;color:rgba(255,255,255,.85)}.segments-cta .eyebrow{color:#fff}.segments-cta .btn{background:#fff;color:var(--red);white-space:nowrap}.segments-cta .btn:hover{background:#171717;color:#fff}
+@media(max-width:980px){.segment-story-grid{grid-template-columns:1fr;gap:34px}.segment-story.alt .segment-story-media,.segment-story.alt .segment-story-copy{order:initial}.segment-story-media{height:460px}.experience-grid{grid-template-columns:1fr 1fr}.segments-experience .section-head,.segments-cta .container{align-items:flex-start;flex-direction:column}}
+@media(max-width:600px){.segment-story{padding:58px 0}.segment-story-media{height:340px;border-radius:22px}.segment-points{grid-template-columns:1fr}.experience-grid{grid-template-columns:1fr}.segments-experience{padding:68px 0}.segments-jump{gap:7px}.segments-jump a{font-size:.78rem;padding:9px 12px}}
+
+/* Imagens demonstrativas — página Segmentos */
+.demo-photo-note{padding:22px 0 0}.demo-photo-note p{margin:0;padding:14px 18px;border-left:4px solid var(--red);background:#f7f7f7;border-radius:0 12px 12px 0;color:#666;font-size:.9rem;line-height:1.55}.segment-story-media::after{content:"IMAGEM DEMONSTRATIVA";position:absolute;left:18px;bottom:18px;padding:7px 10px;border-radius:999px;background:rgba(0,0,0,.66);color:#fff;font-size:.68rem;font-weight:800;letter-spacing:.08em;backdrop-filter:blur(6px)}
