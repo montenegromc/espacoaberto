@@ -755,3 +755,73 @@ section { padding: 86px 0; }
         padding: 24px 20px;
     }
 }
+
+/* =========================================================
+   CORREÇÃO FINAL DOS CARDS DA HOME NO MOBILE
+========================================================= */
+@media screen and (max-width: 768px) {
+
+    .segments-pro .segment-card-3d {
+        display: block !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: hidden !important;
+        perspective: none !important;
+        background: #fff !important;
+        border: 1px solid #dedede !important;
+        border-radius: 22px !important;
+    }
+
+    .segments-pro .segment-card-inner {
+        display: block !important;
+        position: relative !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        transform: none !important;
+        transform-style: flat !important;
+    }
+
+    .segments-pro .segment-card-front {
+        display: block !important;
+        position: relative !important;
+        inset: auto !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: hidden !important;
+        transform: none !important;
+    }
+
+    .segments-pro .segment-card-front .segment-photo {
+        display: block !important;
+        position: relative !important;
+        width: 100% !important;
+        height: 250px !important;
+        min-height: 250px !important;
+        flex: none !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        transform: none !important;
+    }
+
+    .segments-pro .segment-card-front > div:last-child {
+        display: block !important;
+        position: relative !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        padding: 24px 22px 28px !important;
+    }
+
+    .segments-pro .segment-card-front > div:last-child a {
+        display: inline-block !important;
+        margin-top: 16px !important;
+    }
+
+    .segments-pro .segment-card-back {
+        display: none !important;
+    }
+}
+
